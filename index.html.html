@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI કૃષિ મિત્ર – સ્માર્ટ ખેતી તરફનું પગલું</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Sans Gujarati","Nirmala UI",Arial,sans-serif;
+  background:linear-gradient(#bde9ff,#eaffdf);
+  color:#18351d; line-height:1.65; overflow-x:hidden;
+}
+header{
+  min-height:230px; padding:45px 20px; text-align:center;
+  background:linear-gradient(180deg,#72d8ff,#d9f8ff 58%,#8fd36a);
+  position:relative; overflow:hidden;
+}
+.sun{position:absolute;width:90px;height:90px;background:#ffd84d;border-radius:50%;
+right:9%;top:35px;box-shadow:0 0 45px #ffd84d;animation:pulse 3s infinite}
+.cloud{position:absolute;background:white;border-radius:50px;width:130px;height:38px;opacity:.75;animation:cloud 18s linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;background:white;border-radius:50%}
+.cloud:before{width:55px;height:55px;left:20px;top:-25px}.cloud:after{width:70px;height:70px;right:15px;top:-35px}
+.c1{top:55px;left:-150px}.c2{top:120px;left:-250px;animation-duration:25s}
+header h1{position:relative;font-size:clamp(30px,7vw,55px);color:#135c2a;text-shadow:2px 3px white}
+header p{position:relative;font-size:20px;margin-top:8px;font-weight:bold}
+.farm{
+  height:75px;position:absolute;bottom:0;left:0;right:0;
+  background:repeating-linear-gradient(165deg,#4e9d35 0 12px,#6dbd45 12px 24px);
+  transform:skewY(-3deg); transform-origin:bottom;
+}
+.container{max-width:1050px;margin:auto;padding:25px 14px 50px}
+.panel{
+  background:rgba(255,255,255,.96); margin:28px auto; padding:24px;
+  border-radius:24px; border:3px solid #86c95a;
+  box-shadow:0 12px 30px rgba(36,91,35,.18);
+  opacity:0; transform:translateY(45px) scale(.96);
+  animation:appear .8s ease forwards;
+  position:relative; overflow:hidden;
+}
+.panel:nth-child(2n){border-color:#67b9df}
+.panel:before{content:"";position:absolute;left:0;top:0;width:8px;height:100%;background:#65ad42}
+.panel:nth-child(2n):before{background:#48a9d2}
+.scene-title{font-size:25px;color:#17652d;margin-bottom:13px}
+.scene-icon{font-size:38px;vertical-align:middle;margin-right:8px}
+.dialogue{margin:10px 0;padding:12px 16px;border-radius:16px;background:#f2faed}
+.dialogue.ai{background:#eaf5ff;border-left:5px solid #3194cf}
+.dialogue.farmer{border-left:5px solid #68a947}
+.dialogue.son{border-left:5px solid #d19a31}
+.dialogue.woman{border-left:5px solid #ad70bb}
+.label{font-weight:800;margin-right:5px}
+.visual{
+  min-height:130px;margin:15px 0;padding:18px;border-radius:18px;
+  background:linear-gradient(180deg,#bcecff 0 58%,#78bf4c 58% 100%);
+  display:flex;align-items:center;justify-content:center;gap:20px;font-size:55px;
+  position:relative;overflow:hidden;
+}
+.crop{position:absolute;bottom:0;left:0;right:0;height:38px;
+background:repeating-linear-gradient(80deg,transparent 0 18px,#317b32 18px 22px,transparent 22px 35px)}
+.rain{position:absolute;inset:0;background:repeating-linear-gradient(105deg,transparent 0 35px,rgba(40,140,220,.35) 36px 38px);animation:rain .6s linear infinite}
+.phone{animation:float 2.5s ease-in-out infinite}.drone{animation:drone 4s ease-in-out infinite}.robot{animation:robot 1.7s ease-in-out infinite}
+.leaf{animation:sway 2s ease-in-out infinite alternate}
+.chart{width:180px;height:80px;border-bottom:4px solid #277c44;border-left:4px solid #277c44;
+background:linear-gradient(150deg,transparent 45%,#3ca968 46% 50%,transparent 51% 60%,#3ca968 61% 65%,transparent 66%)}
+.progress{height:18px;background:#dcebd6;border-radius:20px;overflow:hidden;margin:10px 0}
+.progress span{display:block;height:100%;width:78%;background:#62ad45;animation:grow 2s ease-out}
+.footer{
+ text-align:center;background:#174f28;color:white;padding:35px 18px;font-size:20px
+}
+.footer strong{font-size:26px;color:#d9ff9f}
+@keyframes appear{to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes robot{50%{transform:translateY(-8px) rotate(-2deg)}}
+@keyframes drone{0%,100%{transform:translate(-80px,-5px)}50%{transform:translate(80px,10px)}}
+@keyframes sway{to{transform:rotate(8deg)}}
+@keyframes pulse{50%{transform:scale(1.08)}}
+@keyframes cloud{to{transform:translateX(125vw)}}
+@keyframes rain{to{background-position:0 35px}}
+@keyframes grow{from{width:0}}
+@media(max-width:600px){
+ header{min-height:250px;padding-top:35px}.panel{padding:17px;margin:20px 2px}
+ .scene-title{font-size:21px}.dialogue{font-size:15px}.visual{font-size:42px}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+<h1>🌾🤖 AI કૃષિ મિત્ર</h1>
+<p>સ્માર્ટ ખેતી તરફનું પગલું</p>
+<div class="farm"></div>
+</header>
+
+<main class="container">
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 1 : સવારનું ખેતર</h2>
+<div class="visual">🌅 👨‍🌾 🌱🌱🌱<div class="crop"></div></div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “આ વર્ષે પાક સારો દેખાય છે, પરંતુ કેટલાક છોડના પાંદડા પીળા કેમ પડી રહ્યા છે?”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “પપ્પા, કદાચ કોઈ રોગ અથવા પોષકતત્ત્વની ઉણપ હોઈ શકે.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 2 : નવી ટેક્નોલોજીનો વિચાર</h2>
+<div class="visual">👦 📱 🤖</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “પપ્પા, મેં ‘AI કૃષિ મિત્ર’ વિશે સાંભળ્યું છે. તે કૃષિ સંબંધિત માહિતી સમજવામાં મદદ કરી શકે છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “AI એટલે કમ્પ્યુટર માણસની જેમ વિચારશે?”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “AI માહિતી અને ડેટાનું વિશ્લેષણ કરીને સૂચનો આપી શકે છે, પરંતુ અંતિમ નિર્ણય ખેડૂત અને કૃષિ નિષ્ણાતે લેવો જોઈએ.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 3 : પાકનો ફોટો</h2>
+<div class="visual">📸 🌿 <span class="phone">📱</span> 🤖</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “ચાલો, આ ફોટો AI કૃષિ મિત્રને બતાવીએ.”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “ફોટામાં પાંદડામાં અસામાન્ય પીળાશ દેખાય છે. આ રોગ, પોષકતત્ત્વની ઉણપ અથવા અન્ય કારણોથી થઈ શકે છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “હવે આપણે વધુ તપાસ કરી શકીશું.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 4 : જમીનની માહિતી</h2>
+<div class="visual">🌱 🧪 🟫 🤖</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “સારી ખેતી માટે જમીનની ગુણવત્તા, ભેજ અને પોષકતત્ત્વોની માહિતી પણ મહત્વપૂર્ણ છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “તો જમીનનું પરીક્ષણ પણ કરાવવું જોઈએ?”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “હા. માટી પરીક્ષણના પરિણામો પરથી યોગ્ય પાક વ્યવસ્થાપન અંગે કૃષિ નિષ્ણાતની સલાહ મેળવી શકાય.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 5 : હવામાનની આગાહી</h2>
+<div class="visual">☁️ ☁️ 🌧️ 🌾<div class="rain"></div></div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “હવામાનના ઉપલબ્ધ ડેટાના આધારે વરસાદની સંભાવના તપાસી શકાય છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “તો સિંચાઈનું આયોજન પણ હવામાન પ્રમાણે કરી શકીએ.”</div>
+<div class="dialogue son"><span class="label">💧 આકાશ:</span> “હા પપ્પા, જરૂરિયાત વગર પાણી આપવાનું ટાળી શકાય.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 6 : સ્માર્ટ સિંચાઈ</h2>
+<div class="visual">💧 🌱 📡 💧</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “જમીનમાં પૂરતી ભેજ હોય તો વધારાની સિંચાઈની જરૂરિયાત ઓછી હોઈ શકે છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “આથી પાણીની બચત કરવામાં મદદ મળશે.”</div>
+<div class="progress"><span></span></div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 7 : જીવાતોની સમસ્યા</h2>
+<div class="visual">🌿 🐛 🐛 🔍</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “આ જીવાતો પાકને નુકસાન પહોંચાડી શકે છે.”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “જીવાતની ઓળખ માટે પાકના સ્પષ્ટ ફોટા અને સ્થાનિક કૃષિ માહિતીનો ઉપયોગ કરી શકાય છે. નિયંત્રણ માટે કૃષિ અધિકારી અથવા નિષ્ણાતની સલાહ લો.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 8 : ડ્રોન દ્વારા દેખરેખ</h2>
+<div class="visual">🌾🌾 <span class="drone">🚁</span> 🌾🌾</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “પપ્પા, ડ્રોનથી પણ ખેતરની દેખરેખ રાખી શકાય છે.”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “ડ્રોન અથવા અન્ય સેન્સરથી મળેલા ડેટાનું વિશ્લેષણ કરીને પાકની સ્થિતિના કેટલાક ભાગો ઓળખવામાં મદદ મળી શકે છે.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “મોટા ખેતરમાં તો આ ખૂબ ઉપયોગી બની શકે!”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 9 : પાકની વૃદ્ધિનું નિરીક્ષણ</h2>
+<div class="visual">📱 📊 <div class="chart"></div> 🌱</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “સમયાંતરે લેવામાં આવેલી માહિતીની સરખામણી કરીને પાકની વૃદ્ધિનું નિરીક્ષણ કરી શકાય છે.”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “એટલે સમસ્યા મોટી બને તે પહેલાં ધ્યાન આપી શકાય!”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 10 : બજારની માહિતી</h2>
+<div class="visual">🌾 🏪 📈 💰</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “હવે પાક ક્યાં અને ક્યારે વેચવો તે પણ વિચારવું પડશે.”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “ઉપલબ્ધ બજાર માહિતી, ભાવના ડેટા અને માંગની માહિતી સમજવામાં હું મદદ કરી શકું છું.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “આથી બજાર અંગે નિર્ણય લેતી વખતે વધુ માહિતી મળી શકે.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 11 : ખેડૂત અને ટેક્નોલોજી</h2>
+<div class="visual">👨‍🌾 + 🧠 + 🤖 = 🌾</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “પહેલાં હું માત્ર અનુભવના આધારે ઘણા નિર્ણયો લેતો હતો.”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “અનુભવ ખૂબ મહત્વનો છે પપ્પા. AI તેને બદલે નહીં, પરંતુ માહિતી અને વિશ્લેષણથી મદદ કરી શકે.”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “ખેડૂતનું જ્ઞાન + ટેક્નોલોજી = વધુ માહિતીસભર નિર્ણય.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 12 : AIની મર્યાદા</h2>
+<div class="visual">⚠️ 🤖 📋 👨‍🌾</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “શું AI હંમેશા સાચો જવાબ આપી શકે?”</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “ના. AI દ્વારા આપવામાં આવેલી માહિતીમાં ભૂલ અથવા મર્યાદા હોઈ શકે છે. સ્થાનિક પરિસ્થિતિ અને નિષ્ણાતની સલાહને ધ્યાનમાં લેવી જરૂરી છે.”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “એટલે AI મદદગાર છે, પરંતુ અંતિમ નિર્ણય માટે સમજદારી જરૂરી છે.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 13 : સ્માર્ટ ખેડૂત</h2>
+<div class="visual">👨‍🌾 🌾🌾🌾 🤖 ✨</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “હવે મને સમજાયું કે આધુનિક ખેતી માત્ર મશીનો પર આધારિત નથી.”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “હા! માહિતી, અનુભવ, વિજ્ઞાન અને ટેક્નોલોજી—બધાનો યોગ્ય ઉપયોગ જરૂરી છે.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 14 : ગામમાં નવી શરૂઆત</h2>
+<div class="visual">🏘️ 👨‍🌾 👩‍🌾 🤝 📱</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “AIનો ઉપયોગ કરતા પહેલાં તેની માહિતી સમજવી અને વિશ્વસનીય કૃષિ સ્ત્રોતો પાસેથી ચકાસણી કરવી જરૂરી છે.”</div>
+<div class="dialogue woman"><span class="label">👩‍🌾 ગીતા બહેન:</span> “જો આપણે ટેક્નોલોજી શીખી લઈએ તો ખેતીમાં નવા રસ્તા ખૂલી શકે.”</div>
+</section>
+
+<section class="panel">
+<h2 class="scene-title"><span class="scene-icon">🎬</span>દૃશ્ય 15 : અંતિમ સંદેશ 🌱</h2>
+<div class="visual">🌅 🌾🌾🌾 🤖 👨‍🌾 👦</div>
+<div class="dialogue ai"><span class="label">🤖 AI કૃષિ મિત્ર:</span> “હું ખેડૂતનો વિકલ્પ નથી. હું ખેડૂતનો માહિતી આધારિત સહાયક છું.”</div>
+<div class="dialogue farmer"><span class="label">👨‍🌾 રમેશભાઈ:</span> “ટેક્નોલોજીનો સમજદારીપૂર્વક ઉપયોગ કરીએ અને ખેતીને વધુ સ્માર્ટ બનાવીએ.”</div>
+<div class="dialogue son"><span class="label">👦 આકાશ:</span> “આજનો ખેડૂત — જ્ઞાનથી સજ્જ, ટેક્નોલોજીથી સક્ષમ અને ભવિષ્ય માટે તૈયાર! 🌾🤖”</div>
+</section>
+
+</main>
+
+<footer>
+<strong>🌟 વેબટૂનનો મુખ્ય સંદેશ</strong><br><br>
+AI કૃષિ મિત્ર ખેડૂતોને હવામાન, પાકની દેખરેખ, જમીન, સિંચાઈ, જીવાતો અને બજાર જેવી બાબતોમાં માહિતીનું વિશ્લેષણ કરવામાં મદદ કરી શકે છે.<br>
+AIનો યોગ્ય ઉપયોગ કરીને ખેતીને વધુ માહિતી આધારિત અને કાર્યક્ષમ બનાવવામાં સહાય મળી શકે છે.
+</footer>
+</body>
+</html>
